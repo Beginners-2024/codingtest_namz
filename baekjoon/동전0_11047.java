@@ -18,7 +18,7 @@ public class 동전0_11047 {
 		for (int i = 0; i < N; ++i){
 			int value = Integer.parseInt(br.readLine());
 
-			if (value > K) break;
+			if (value > K) break;	// 동전의 금액이 K보다 크면 입력 중단
 			coin.add(value);
 		}
 		N = coin.size();
@@ -26,6 +26,11 @@ public class 동전0_11047 {
 		System.out.println(countMoney());
 	}
 
+	/**
+	 * 현재 동전의 금액이 남은 총 금액보다 크면, 최대한의 개수로 동전을 사용 & 총 금액 줄임
+	 *
+	 * @return 사용한 동전 개수
+	 */
 	public static int countMoney() {
 		int countOfCoin = 0;
 
