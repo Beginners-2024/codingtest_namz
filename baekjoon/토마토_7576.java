@@ -5,14 +5,17 @@ import java.io.*;
 
 public class 토마토_7576 {
 
+	// 입력값
 	private static int M, N;
 	private static int[][] tomato;
 
-	private static int[] dr = {-1, 1, 0, 0};
+	// BFS용 변수
+	private static int[] dr = {-1, 1, 0, 0};							// 상하좌우
 	private static int[] dc = {0, 0, -1, 1};
-	private static Queue<Pair> deliciousTomato = new LinkedList<>();
+	private static Queue<Pair> deliciousTomato = new LinkedList<>();	// 익은 토마토 리스트
 	private static int dayToBeDelicious = 0;
 
+	// (r, c)
 	private static class Pair {
 		int r, c;
 		Pair(int r, int c) {
@@ -30,7 +33,8 @@ public class 토마토_7576 {
 		N = Integer.parseInt(st.nextToken());
 
 		tomato = new int[N][M];
-		boolean start = false;
+		boolean start = false;	// 토마토 익히기를 시작할 수 있는지 여부 판단
+
 		for (int r = 0; r < N; ++r) {
 			st = new StringTokenizer(br.readLine());
 			for (int c = 0; c < M; ++c) {
@@ -40,16 +44,19 @@ public class 토마토_7576 {
 			}
 		}
 
+		// 모든 토마토가 이미 익어서 시작 불가능
 		if (!start) {
 			System.out.println(0);
 			return ;
 		}
 
+		// 토마토 익히기
 		while (!deliciousTomato.isEmpty()) {
-			if (makeDelicious(deliciousTomato.peek().r, deliciousTomato.peek().c, deliciousTomato.size()))
+			if (makeDelicious(deliciousTomato.size()))
 				dayToBeDelicious++;
 		}
 
+		// 안익은 토마토가 낭아있는 상황. 개수로 비교하려다가 귀찮음 이슈 발발..........
 		for (int r = 0; r < N; ++r) {
 			for (int c = 0; c < M; ++c) {
 				if (tomato[r][c] == 0) {
@@ -62,7 +69,13 @@ public class 토마토_7576 {
 		System.out.println(dayToBeDelicious);
 	}
 
-	private static boolean makeDelicious(int r, int c, int size) {
+	/**
+	 * 현재 토마토의 상하좌우에 위치한 안익은 토마토를 익함
+	 *
+	 * @param size 현재 단계에서 확인해야할 익은 토마토 리스트의 사이즈
+	 * @return true : 안익음->익음 으로 바뀐 토마토 있음, false : 없음
+	 */
+	private static boolean makeDelicious(int size) {
 		boolean flag = false;
 		while (size > 0) {
 			Pair nowTomato = deliciousTomato.poll();

@@ -5,13 +5,16 @@ import java.io.*;
 
 public class 미로탐색_2178 {
 
+	// 입력값
 	private static int N, M;
 	private static int[][] maze;
 
+	// BFS용 변수
 	private static int[] dr = {-1, 1, 0, 0};
 	private static int[] dc = {0, 0, -1, 1};
 	private static boolean[][] visit;
 
+	// (r, c)
 	private static class Pair {
 		int r, c;
 		Pair(int r, int c) {
@@ -41,6 +44,9 @@ public class 미로탐색_2178 {
 		System.out.println(maze[N-1][M-1]);
 	}
 
+	/**
+	 * 현재 위치의 상하좌우에 현재위치+1 을 넣어 각 칸에 도달하기 위한 최단경로 값을 구함.
+	 */
 	private static void makeRoute() {
 		Queue<Pair> q = new LinkedList<>();
 		q.add(new Pair(0, 0));
