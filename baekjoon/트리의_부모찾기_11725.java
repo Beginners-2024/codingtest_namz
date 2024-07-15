@@ -7,21 +7,21 @@ public class 트리의_부모찾기_11725 {
 
 	private static int N;
 
-	private static Tree tree = new Tree();
+	private static int[] parent;
+	private static boolean[] isVisit;
+	private static List<Integer>[] nodeList;
 
-	private static class Node {
-		Node left, right;
-		int data;
-
-		Node(int data) {
-			this.data = data;
-		}
-
-	}
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 		N = Integer.parseInt(br.readLine());
+
+		parent = new int[N+1];
+		isVisit = new boolean[N+1];
+		nodeList = new ArrayList[N+1];
+		for (int i = 0; i <= N; ++i) {
+			nodeList[i] = new ArrayList<>();
+		}
 
 		StringTokenizer st;
 		for (int i = 0; i < N-1; ++i) {
@@ -29,61 +29,27 @@ public class 트리의_부모찾기_11725 {
 			int data1 = Integer.parseInt(st.nextToken());
 			int data2 = Integer.parseInt(st.nextToken());
 
-			tree.create(data1, data2);
+			nodeList[data1].add(data2);
+			nodeList[data2].add(data1);
 		}
 
+		findParent(1);
+
+		StringBuilder sb = new StringBuilder();
 		for (int i = 2; i <= N; ++i) {
-			System.out.println(tree.searchParent(tree.root, i));
+			sb.append(parent[i]).append("\n");
 		}
-
+		System.out.print(sb);
 	}
 
-	private static class Tree {
-		public Node root;
+	private static void findParent(int index) {
+		isVisit[index] = true;
 
-		public void create(int data1, int data2) {
-			if (root == null && (data1 == 1 || data2 == 1)) {
-				root = new Node(data1 == 1 ? data1 : data2);
-				if (root.left == null)
-					root.left = new Node(data1 == 1 ? data2 : data1);
-				else
-					root.right = new Node(data1 == 1 ? data2 : data1);
+		for (int i : nodeList[index]) {
+			if (!isVisit[i]) {
+				parent[i] = index;
+				findParent(i);
 			}
-			else {
-				Node node = search(root, data1);
-				if (node == null)
-					node = search(root, data2);
-
-				if (node.left == null)
-					node.left = new Node(node.data == data1 ? data2 : data1);
-				else
-					node.right = new Node(node.data == data1 ? data2 : data1);
-			}
-
-		}
-
-		public Node search(Node node, int data) {
-			if (node == null) return null;
-			if (node.data == data) return node;
-
-			Node leftNode = search(node.left, data);
-			if (leftNode != null)
-				return leftNode;
-			return search(node.right, data);
-		}
-
-		public int searchParent(Node node, int data) {
-			if (node == null) return 0;
-			if (node.left != null && node.left.data == data) return node.data;
-			if (node.right != null && node.right.data == data) return node.data;
-
-			int parent = searchParent(node.left, data);
-			if (parent == 0) parent = searchParent(node.right, data);
-
-			return parent;
-
 		}
 	}
-
-
 }
