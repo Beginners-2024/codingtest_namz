@@ -17,7 +17,7 @@ public class 연결요소의_개수_11724 {
 	private static int N, M;
 
 	private static List<Integer>[] nodeList;	// 간선으로 연결된 노드 리스트
-	private static boolean[] isVisit;			// bfs용
+	private static boolean[] isVisit;			// dfs용
 
 	private static int countOfGraph = 0;
 
