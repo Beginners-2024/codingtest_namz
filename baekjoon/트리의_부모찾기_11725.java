@@ -3,6 +3,10 @@ package baekjoon;
 import java.util.*;
 import java.io.*;
 
+/**
+ * 시간복잡도 : O(N)
+ * 		입력 O(N) + 부모찾기 O(N) + 출력 O(N)
+ */
 public class 트리의_부모찾기_11725 {
 
 	private static int N;

@@ -3,6 +3,10 @@ package baekjoon;
 import java.util.*;
 import java.io.*;
 
+/**
+ * 시간복잡도 : O(NlogN)
+ * 		입력 O(N) + 정렬 O(NlogN) + 출력 O(N)
+ */
 public class 보물_1026 {
 
 	private static int N;

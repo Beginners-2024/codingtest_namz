@@ -3,6 +3,10 @@ package baekjoon;
 import java.util.*;
 import java.io.*;
 
+/**
+ * 시간복잡도 : O(NlogN)
+ * 		입력 O(N) + 정렬 O(NlogN) + 계산 O(N)
+ */
 public class 로프_2217 {
 
 	private static int N;

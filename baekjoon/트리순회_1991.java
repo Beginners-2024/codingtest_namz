@@ -3,6 +3,11 @@ package baekjoon;
 import java.io.*;
 import java.util.*;
 
+/**
+ * 시간복잡도 : O(N)
+ * 		create : worst O(N)
+ * 		(pre/in/post)order : O(N)
+ */
 public class 트리순회_1991 {
 
 	private static int N;
