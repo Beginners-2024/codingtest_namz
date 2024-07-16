@@ -48,7 +48,7 @@ public class 연결요소의_개수_11724 {
 			nodeList[node2].add(node1);
 		}
 
-		// step 2 - 그래프 계산. bfs
+		// step 2 - 그래프 계산. dfs
 		for (int i = 1; i <= N; ++i) {
 			if (!isVisit[i]) {
 				findGraph(i);
@@ -63,7 +63,7 @@ public class 연결요소의_개수_11724 {
 	}
 
 	/**
-	 * now node와 연결된 next node, next, next, ... 이런식으로 그래프를 쭉 순회함 => BFS 방식
+	 * now node와 연결된 next node, next, next, ... 이런식으로 그래프를 쭉 순회함 => DFS 방식
 	 * 순회가 끝나면 하나의 그래프가 끝이 난 것
 	 *
 	 * @param now 현재 노드의 index
