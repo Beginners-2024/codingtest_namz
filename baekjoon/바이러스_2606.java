@@ -3,6 +3,13 @@ package baekjoon;
 import java.io.*;
 import java.util.*;
 
+/**
+ * 시간복잡도 : O(M + N)
+ * 		초기화 O(N) + 입력 O(M) + dfs / bfs O(N + M)
+ * 메모리 : 14136 KB
+ * 시간 : 104 ms (BFS랑 DFS랑 큰 차이 없음)
+ */
+
 public class 바이러스_2606 {
 
 	private static int N, M;
@@ -15,6 +22,7 @@ public class 바이러스_2606 {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
+		// step 1 - 입력
 		N = Integer.parseInt(br.readLine());
 		M = Integer.parseInt(br.readLine());
 
@@ -36,6 +44,7 @@ public class 바이러스_2606 {
 			nodeList[node2].add(node1);
 		}
 
+		// step 2 - 계산
 		bfs(1);
 
 		// dfs(1);
