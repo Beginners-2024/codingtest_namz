@@ -5,7 +5,8 @@ import java.util.*;
 
 /**
  * 소요시간 : 20분
- * 시간복잡도 :
+ * 시간복잡도 : O(NlogN)
+ * 			입력 O(N) + 정렬 O(NlogN) + findMin O(N)
  * 메모리 : 28472 KB
  * 시간 : 392 ms
  */
