@@ -5,10 +5,13 @@ import java.io.*;
 
 /**
  * 소요시간 : 40분
- *
- * 시간복잡도 :
  * 메모리 : 14504 KB
  * 시간 : 128 ms
+ *
+ * 시간복잡도 : O(288 + 72 + 72) = O(432)
+ * 		- findPuyoBFS worst O(12 * 6 * 4) = O(288)
+ * 		- deletePuyo worst O(12 * 6) = O(72)
+ * 		- gravity O (12 * 6) = O(72)
  */
 public class 뿌요뿌요_11559 {
 
