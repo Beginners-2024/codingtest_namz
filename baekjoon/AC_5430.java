@@ -23,15 +23,20 @@ public class AC_5430 {
             }
 
             command(p, numList);
+
+            if (!numList.isEmpty()) System.out.println(numList);
         }
     }
 
     private static void command(String p, List<Integer> numList) {
         for (int i = 0; i < p.length(); ++i) {
             if (p.charAt(i) == 'R') {
-
+                Collections.reverse(numList);
             } else if (p.charAt(i) == 'D') {
-
+                if (numList.isEmpty())
+                    System.out.println("error");
+                else
+                    numList.remove(0);
             }
         }
     }
