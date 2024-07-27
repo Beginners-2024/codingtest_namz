@@ -3,6 +3,11 @@ package baekjoon;
 import java.io.*;
 import java.util.*;
 
+/**
+ * 소요시간 : 30분
+ * 메모리 : 14316 KB
+ * 시간 : 128 ms
+ */
 public class 회전하는_큐_1021 {
 	private static Deque<Integer> dq;
 	public static void main(String[] args) throws IOException {
