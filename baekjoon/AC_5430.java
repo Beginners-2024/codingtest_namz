@@ -6,10 +6,9 @@ import java.util.*;
 /**
  * 소요시간 : 1시간 10분
  * 메모리 : 93216 KB
- * 시간 : 2664 ms (list.remove(index) 사용새) / 864 ms (start, end 사용시)
+ * 시간 : 2664 ms (list.remove(index) 사용시) / 864 ms (start, end 사용시)
  *
- * 시간복잡도 :
- *
+ * 시간복잡도 : O(T*(P+N))
  */
 public class AC_5430 {
     private static List<Integer> answerList;
