@@ -38,7 +38,7 @@ public class 회전초밥_2531 {
 	 * K개의 스시에서 start 뺘고, end 더하면서 한바퀴를 돎.
 	 * 중복 확인은 hashMap 사용 (동일한 종류의 초밥에 대한 개수도 카운트 해야하므로 map)
 	 *
-	 * @return
+	 * @return 최대 종류 개수
 	 */
 	private static int eat() {
 		int maxType = 0;
