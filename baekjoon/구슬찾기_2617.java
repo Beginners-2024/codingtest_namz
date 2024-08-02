@@ -4,19 +4,24 @@ import java.io.*;
 import java.util.*;
 
 public class 구슬찾기_2617 {
-
 	private static int N, M;
 	private static Tree[] marble;
-
-	private static Set<Integer> lightSet;
-	private static Set<Integer> heavySet;
+	private static boolean[] lightArr, heavyArr;
 
 	private static class Tree {
-		Set<Integer> light, heavy;
+		boolean[] light, heavy;
+		int lightCount = 0, heavyCount = 0;
 
-		Tree() {
-			light = new HashSet<>();
-			heavy = new HashSet<>();
+		Tree(int n) {
+			light = new boolean[n];
+			heavy = new boolean[n];
+		}
+
+		void setCount() {
+			for (int i = 0; i < N; ++i) {
+				if (light[i]) lightCount++;
+				if (heavy[i]) heavyCount++;
+			}
 		}
 	}
 	public static void main(String[] args) throws IOException {
@@ -28,7 +33,7 @@ public class 구슬찾기_2617 {
 
 		marble = new Tree[N];
 		for (int i = 0; i < N; ++i) {
-			marble[i] = new Tree();
+			marble[i] = new Tree(N);
 		}
 
 		for (int i = 0; i < M; ++i) {
@@ -36,40 +41,36 @@ public class 구슬찾기_2617 {
 			int mh = Integer.parseInt(st.nextToken()) - 1;
 			int ml = Integer.parseInt(st.nextToken()) - 1;
 
-			marble[mh].light.add(ml);
-			marble[ml].heavy.add(mh);
+			marble[mh].light[ml] = true;
+			marble[ml].heavy[mh] = true;
 
 		}
 
 		for (int i = 0; i < N; ++i) {
-			lightSet = new HashSet<>();
-			heavySet = new HashSet<>();
+			lightArr = new boolean[N];
+			heavyArr = new boolean[N];
 
 			checkLight(i, i);
 			checkHeavy(i, i);
 
-			marble[i].light.addAll(lightSet);
-			marble[i].heavy.addAll(heavySet);
-
+			marble[i].setCount();
 		}
 
 		System.out.println(findNoMiddle());
 	}
 
 	private static void checkLight(int root, int now) {
-		if (marble[now].light.isEmpty()) return;
-
-		for (int next : marble[now].light) {
-			lightSet.add(next);
+		for (int next =  0; next < N; ++next) {
+			if (marble[now].light[next] == false) continue;
+			marble[root].light[next] = true;
 			checkLight(root, next);
 		}
 	}
 
 	private static void checkHeavy(int root, int now) {
-		if (marble[now].heavy.isEmpty()) return;
-
-		for (int next : marble[now].heavy) {
-			heavySet.add(next);
+		for (int next =  0; next < N; ++next) {
+			if (marble[now].heavy[next] == false) continue;
+			marble[root].heavy[next] = true;
 			checkHeavy(root, next);
 		}
 	}
@@ -81,8 +82,8 @@ public class 구슬찾기_2617 {
 
 		int noMid = 0;
 		for (int i = 0; i < N; ++i) {
-			if (marble[i].light.size() > lightCount
-				|| marble[i].heavy.size() > heavyCount) noMid++;
+			if (marble[i].lightCount > lightCount
+				|| marble[i].heavyCount > heavyCount) noMid++;
 		}
 
 		return noMid;
