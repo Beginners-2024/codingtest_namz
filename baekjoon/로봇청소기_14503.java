@@ -5,6 +5,8 @@ import java.util.*;
 
 /**
  * 풀이시간 : 40분
+ * 메모리 : 14372 KB
+ * 시간 : 108 ms
  */
 public class 로봇청소기_14503 {
 
