@@ -7,6 +7,7 @@ import java.util.*;
  * 풀이시간 : 40분
  * 메모리 : 14540 KB
  * 시간 : 108 ms
+ * 시간복잡도 : O(N*N)
  */
 public class 뱀_3190 {
 
